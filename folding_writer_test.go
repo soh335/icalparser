@@ -29,4 +29,12 @@ func TestFoldingWriter(t *testing.T) {
 			t.Errorf("expected %v but got %v", e, g)
 		}
 	}
+
+	{
+		w := NewFoldingWriter(5)
+		w.Write([]byte("世界"))
+		if e, g := "世\r\n 界", w.String(); e != g {
+			t.Errorf("expected %v but got %v", e, g)
+		}
+	}
 }

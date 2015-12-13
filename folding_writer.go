@@ -2,6 +2,7 @@ package icalparser
 
 import (
 	"bytes"
+	"unicode/utf8"
 )
 
 type FoldingWriter struct {
@@ -22,6 +23,9 @@ func (f *FoldingWriter) Write(b []byte) (int, error) {
 	for len(b) > 0 {
 		remain := f.maxLineSize - f.lineSize - 1
 		if len(b) > remain {
+			for !utf8.Valid(b[:remain]) {
+				remain--
+			}
 			n, _ := f.b.Write(b[:remain])
 			size += n
 			n, _ = f.b.WriteString("\r\n ")
