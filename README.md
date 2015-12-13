@@ -1,3 +1,5 @@
+[![wercker status](https://app.wercker.com/status/5d3bc7d53a19bfc2a9100e5f4eb2d4d9/s/master "wercker status")](https://app.wercker.com/project/bykey/5d3bc7d53a19bfc2a9100e5f4eb2d4d9)
+
 # icalparser
 
 lexical ical parser for golang
