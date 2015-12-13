@@ -24,6 +24,7 @@ icalparser.NewPrinter(obj).WriteTo(&b)
 
 * many, many refactoring
 * writing document
+* folding with rune
 
 ## SEE ALSO
 
