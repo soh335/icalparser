@@ -6,80 +6,80 @@ import (
 )
 
 type Object struct {
-	headerLine     *ContentLine
-	propertiyLines []*ContentLine
-	components     []*Component
-	footerLine     *ContentLine
+	HeaderLine     *ContentLine
+	PropertiyLines []*ContentLine
+	Components     []*Component
+	FooterLine     *ContentLine
 }
 
 func (o *Object) String() string {
 	var b bytes.Buffer
-	b.WriteString(o.headerLine.String())
+	b.WriteString(o.HeaderLine.String())
 	b.WriteString("\r\n")
-	for _, line := range o.propertiyLines {
+	for _, line := range o.PropertiyLines {
 		b.WriteString(line.String())
 		b.WriteString("\r\n")
 	}
-	for _, line := range o.components {
+	for _, line := range o.Components {
 		b.WriteString(line.String())
 	}
-	b.WriteString(o.footerLine.String())
+	b.WriteString(o.FooterLine.String())
 	b.WriteString("\r\n")
 	return b.String()
 }
 
 type Component struct {
-	headerLine     *ContentLine
-	propertiyLines []*ContentLine
-	footerLine     *ContentLine
+	HeaderLine     *ContentLine
+	PropertiyLines []*ContentLine
+	FooterLine     *ContentLine
 }
 
 func (c *Component) String() string {
 	var b bytes.Buffer
-	b.WriteString(c.headerLine.String())
+	b.WriteString(c.HeaderLine.String())
 	b.WriteString("\r\n")
-	for _, line := range c.propertiyLines {
+	for _, line := range c.PropertiyLines {
 		b.WriteString(line.String())
 		b.WriteString("\r\n")
 	}
-	b.WriteString(c.footerLine.String())
+	b.WriteString(c.FooterLine.String())
 	b.WriteString("\r\n")
 	return b.String()
 }
 
 type ContentLine struct {
-	name  *Ident
-	param []*Param
-	value *Ident
+	Name  *Ident
+	Param []*Param
+	Value *Ident
 }
 
 func (c *ContentLine) String() string {
 	f := NewFoldingWriter(75)
-	io.WriteString(f, c.name.String())
+	io.WriteString(f, c.Name.String())
 
-	for i, param := range c.param {
-		if i < len(c.param) {
+	for i, param := range c.Param {
+		if i < len(c.Param) {
 			io.WriteString(f, ";")
 		}
 		io.WriteString(f, param.String())
 	}
 
 	io.WriteString(f, ":")
-	io.WriteString(f, c.value.String())
+	io.WriteString(f, c.Value.String())
 	return f.String()
 }
 
 type Param struct {
-	paramName   *Ident
-	paramValues []*Ident
+	ParamName   *Ident
+	ParamValues []*Ident
 }
 
 func (p *Param) String() string {
 	var b bytes.Buffer
-	b.WriteString(p.paramName.String())
-	for i, paramValue := range p.paramValues {
+	b.WriteString(p.ParamName.String())
+	for i, paramValue := range p.ParamValues {
 		b.WriteString(paramValue.String())
-		if i < len(p.paramValues)-1 {
+		if i < len(p.ParamValues)-1 {
 			b.WriteString(",")
 		}
 	}
@@ -87,19 +87,19 @@ func (p *Param) String() string {
 }
 
 type Ident struct {
-	c     string
-	token token
+	C     string
+	Token token
 }
 
 func (i *Ident) String() string {
 	var b bytes.Buffer
-	switch i.token {
+	switch i.Token {
 	case tokenQuotedString:
 		b.WriteString(`"`)
-		b.WriteString(i.c)
+		b.WriteString(i.C)
 		b.WriteString(`"`)
 	default:
-		b.WriteString(i.c)
+		b.WriteString(i.C)
 	}
 
 	return b.String()

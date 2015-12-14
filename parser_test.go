@@ -23,43 +23,43 @@ END:VCALENDAR
 		}
 
 		if !reflect.DeepEqual(obj, &Object{
-			headerLine: &ContentLine{
-				name:  &Ident{"BEGIN", tokenIANA},
-				param: []*Param{},
-				value: &Ident{"VCALENDAR", tokenValue},
+			HeaderLine: &ContentLine{
+				Name:  &Ident{"BEGIN", tokenIANA},
+				Param: []*Param{},
+				Value: &Ident{"VCALENDAR", tokenValue},
 			},
-			propertiyLines: []*ContentLine{
+			PropertiyLines: []*ContentLine{
 				{
-					name:  &Ident{"VERSION", tokenIANA},
-					param: []*Param{},
-					value: &Ident{"2.0", tokenValue},
+					Name:  &Ident{"VERSION", tokenIANA},
+					Param: []*Param{},
+					Value: &Ident{"2.0", tokenValue},
 				},
 			},
-			components: []*Component{
+			Components: []*Component{
 				{
-					headerLine: &ContentLine{
-						name:  &Ident{"BEGIN", tokenIANA},
-						param: []*Param{},
-						value: &Ident{"VEVENT", tokenValue},
+					HeaderLine: &ContentLine{
+						Name:  &Ident{"BEGIN", tokenIANA},
+						Param: []*Param{},
+						Value: &Ident{"VEVENT", tokenValue},
 					},
-					propertiyLines: []*ContentLine{
+					PropertiyLines: []*ContentLine{
 						{
-							name:  &Ident{"SUMMARY", tokenIANA},
-							param: []*Param{},
-							value: &Ident{"Bastille Day Party", tokenValue},
+							Name:  &Ident{"SUMMARY", tokenIANA},
+							Param: []*Param{},
+							Value: &Ident{"Bastille Day Party", tokenValue},
 						},
 					},
-					footerLine: &ContentLine{
-						name:  &Ident{"END", tokenIANA},
-						param: []*Param{},
-						value: &Ident{"VEVENT", tokenValue},
+					FooterLine: &ContentLine{
+						Name:  &Ident{"END", tokenIANA},
+						Param: []*Param{},
+						Value: &Ident{"VEVENT", tokenValue},
 					},
 				},
 			},
-			footerLine: &ContentLine{
-				name:  &Ident{"END", tokenIANA},
-				param: []*Param{},
-				value: &Ident{"VCALENDAR", tokenValue},
+			FooterLine: &ContentLine{
+				Name:  &Ident{"END", tokenIANA},
+				Param: []*Param{},
+				Value: &Ident{"VCALENDAR", tokenValue},
 			},
 		}) {
 			t.Error("got unexpected obj")
@@ -83,43 +83,43 @@ END:VCALENDAR
 		}
 
 		if !reflect.DeepEqual(obj, &Object{
-			headerLine: &ContentLine{
-				name:  &Ident{"BEGIN", tokenIANA},
-				param: []*Param{},
-				value: &Ident{"VCALENDAR", tokenValue},
+			HeaderLine: &ContentLine{
+				Name:  &Ident{"BEGIN", tokenIANA},
+				Param: []*Param{},
+				Value: &Ident{"VCALENDAR", tokenValue},
 			},
-			propertiyLines: []*ContentLine{
+			PropertiyLines: []*ContentLine{
 				{
-					name:  &Ident{"VERSION", tokenIANA},
-					param: []*Param{},
-					value: &Ident{"2.0", tokenValue},
+					Name:  &Ident{"VERSION", tokenIANA},
+					Param: []*Param{},
+					Value: &Ident{"2.0", tokenValue},
 				},
 			},
-			components: []*Component{
+			Components: []*Component{
 				{
-					headerLine: &ContentLine{
-						name:  &Ident{"BEGIN", tokenIANA},
-						param: []*Param{},
-						value: &Ident{"VEVENT", tokenValue},
+					HeaderLine: &ContentLine{
+						Name:  &Ident{"BEGIN", tokenIANA},
+						Param: []*Param{},
+						Value: &Ident{"VEVENT", tokenValue},
 					},
-					propertiyLines: []*ContentLine{
+					PropertiyLines: []*ContentLine{
 						{
-							name:  &Ident{"DESCRIPTION", tokenIANA},
-							param: []*Param{},
-							value: &Ident{"This is a long description that exists on a long line.", tokenValue},
+							Name:  &Ident{"DESCRIPTION", tokenIANA},
+							Param: []*Param{},
+							Value: &Ident{"This is a long description that exists on a long line.", tokenValue},
 						},
 					},
-					footerLine: &ContentLine{
-						name:  &Ident{"END", tokenIANA},
-						param: []*Param{},
-						value: &Ident{"VEVENT", tokenValue},
+					FooterLine: &ContentLine{
+						Name:  &Ident{"END", tokenIANA},
+						Param: []*Param{},
+						Value: &Ident{"VEVENT", tokenValue},
 					},
 				},
 			},
-			footerLine: &ContentLine{
-				name:  &Ident{"END", tokenIANA},
-				param: []*Param{},
-				value: &Ident{"VCALENDAR", tokenValue},
+			FooterLine: &ContentLine{
+				Name:  &Ident{"END", tokenIANA},
+				Param: []*Param{},
+				Value: &Ident{"VCALENDAR", tokenValue},
 			},
 		}) {
 			t.Error("got unexpected obj")
@@ -142,52 +142,52 @@ END:VCALENDAR
 		}
 
 		if !reflect.DeepEqual(obj, &Object{
-			headerLine: &ContentLine{
-				name:  &Ident{"BEGIN", tokenIANA},
-				param: []*Param{},
-				value: &Ident{"VCALENDAR", tokenValue},
+			HeaderLine: &ContentLine{
+				Name:  &Ident{"BEGIN", tokenIANA},
+				Param: []*Param{},
+				Value: &Ident{"VCALENDAR", tokenValue},
 			},
-			propertiyLines: []*ContentLine{
+			PropertiyLines: []*ContentLine{
 				{
-					name:  &Ident{"VERSION", tokenIANA},
-					param: []*Param{},
-					value: &Ident{"2.0", tokenValue},
+					Name:  &Ident{"VERSION", tokenIANA},
+					Param: []*Param{},
+					Value: &Ident{"2.0", tokenValue},
 				},
 			},
-			components: []*Component{
+			Components: []*Component{
 				{
-					headerLine: &ContentLine{
-						name:  &Ident{"BEGIN", tokenIANA},
-						param: []*Param{},
-						value: &Ident{"VEVENT", tokenValue},
+					HeaderLine: &ContentLine{
+						Name:  &Ident{"BEGIN", tokenIANA},
+						Param: []*Param{},
+						Value: &Ident{"VEVENT", tokenValue},
 					},
-					propertiyLines: []*ContentLine{
+					PropertiyLines: []*ContentLine{
 						{
-							name: &Ident{"ATTENDEE", tokenIANA},
-							param: []*Param{
+							Name: &Ident{"ATTENDEE", tokenIANA},
+							Param: []*Param{
 								{
-									paramName:   &Ident{"RSVP", tokenParamName},
-									paramValues: []*Ident{{"TRUE", tokenQuotedString}},
+									ParamName:   &Ident{"RSVP", tokenParamName},
+									ParamValues: []*Ident{{"TRUE", tokenQuotedString}},
 								},
 								{
-									paramName:   &Ident{"ROLE", tokenParamName},
-									paramValues: []*Ident{{"REQ-PARTICIPANT", tokenParamText}},
+									ParamName:   &Ident{"ROLE", tokenParamName},
+									ParamValues: []*Ident{{"REQ-PARTICIPANT", tokenParamText}},
 								},
 							},
-							value: &Ident{"mailto:jsmith@example.com", tokenValue},
+							Value: &Ident{"mailto:jsmith@example.com", tokenValue},
 						},
 					},
-					footerLine: &ContentLine{
-						name:  &Ident{"END", tokenIANA},
-						param: []*Param{},
-						value: &Ident{"VEVENT", tokenValue},
+					FooterLine: &ContentLine{
+						Name:  &Ident{"END", tokenIANA},
+						Param: []*Param{},
+						Value: &Ident{"VEVENT", tokenValue},
 					},
 				},
 			},
-			footerLine: &ContentLine{
-				name:  &Ident{"END", tokenIANA},
-				param: []*Param{},
-				value: &Ident{"VCALENDAR", tokenValue},
+			FooterLine: &ContentLine{
+				Name:  &Ident{"END", tokenIANA},
+				Param: []*Param{},
+				Value: &Ident{"VCALENDAR", tokenValue},
 			},
 		}) {
 			t.Error("got unexpected obj")
@@ -210,51 +210,51 @@ END:VCALENDAR
 		}
 
 		if !reflect.DeepEqual(obj, &Object{
-			headerLine: &ContentLine{
-				name:  &Ident{"BEGIN", tokenIANA},
-				param: []*Param{},
-				value: &Ident{"VCALENDAR", tokenValue},
+			HeaderLine: &ContentLine{
+				Name:  &Ident{"BEGIN", tokenIANA},
+				Param: []*Param{},
+				Value: &Ident{"VCALENDAR", tokenValue},
 			},
-			propertiyLines: []*ContentLine{
+			PropertiyLines: []*ContentLine{
 				{
-					name:  &Ident{"VERSION", tokenIANA},
-					param: []*Param{},
-					value: &Ident{"2.0", tokenValue},
+					Name:  &Ident{"VERSION", tokenIANA},
+					Param: []*Param{},
+					Value: &Ident{"2.0", tokenValue},
 				},
 			},
-			components: []*Component{
+			Components: []*Component{
 				{
-					headerLine: &ContentLine{
-						name:  &Ident{"BEGIN", tokenIANA},
-						param: []*Param{},
-						value: &Ident{"VEVENT", tokenValue},
+					HeaderLine: &ContentLine{
+						Name:  &Ident{"BEGIN", tokenIANA},
+						Param: []*Param{},
+						Value: &Ident{"VEVENT", tokenValue},
 					},
-					propertiyLines: []*ContentLine{
+					PropertiyLines: []*ContentLine{
 						{
-							name: &Ident{"ATTENDEE", tokenIANA},
-							param: []*Param{
+							Name: &Ident{"ATTENDEE", tokenIANA},
+							Param: []*Param{
 								{
-									paramName: &Ident{"DELEGATED-TO", tokenParamName},
-									paramValues: []*Ident{
+									ParamName: &Ident{"DELEGATED-TO", tokenParamName},
+									ParamValues: []*Ident{
 										{"mailto:jdoe@example.com", tokenQuotedString},
 										{"mailto:jqpublic@example.com", tokenQuotedString},
 									},
 								},
 							},
-							value: &Ident{"mailto:jsmith@example.com", tokenValue},
+							Value: &Ident{"mailto:jsmith@example.com", tokenValue},
 						},
 					},
-					footerLine: &ContentLine{
-						name:  &Ident{"END", tokenIANA},
-						param: []*Param{},
-						value: &Ident{"VEVENT", tokenValue},
+					FooterLine: &ContentLine{
+						Name:  &Ident{"END", tokenIANA},
+						Param: []*Param{},
+						Value: &Ident{"VEVENT", tokenValue},
 					},
 				},
 			},
-			footerLine: &ContentLine{
-				name:  &Ident{"END", tokenIANA},
-				param: []*Param{},
-				value: &Ident{"VCALENDAR", tokenValue},
+			FooterLine: &ContentLine{
+				Name:  &Ident{"END", tokenIANA},
+				Param: []*Param{},
+				Value: &Ident{"VCALENDAR", tokenValue},
 			},
 		}) {
 			t.Error("got unexpected obj")

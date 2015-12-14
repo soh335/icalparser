@@ -16,8 +16,8 @@ func NewParser(r io.Reader) *Parser {
 
 func (p *Parser) Parse() (*Object, error) {
 	object := &Object{
-		components:     []*Component{},
-		propertiyLines: []*ContentLine{},
+		Components:     []*Component{},
+		PropertiyLines: []*ContentLine{},
 	}
 
 	lineNum := 0
@@ -26,7 +26,7 @@ func (p *Parser) Parse() (*Object, error) {
 	for {
 		line, err := p.parseLine()
 
-		if object.footerLine != nil && err == io.EOF {
+		if object.FooterLine != nil && err == io.EOF {
 			return object, nil
 		} else {
 			if line == nil {
@@ -42,31 +42,31 @@ func (p *Parser) Parse() (*Object, error) {
 			if e, g := "BEGIN:VCALENDAR", line.String(); e != g {
 				return nil, fmt.Errorf("first line is expected %v but got %v", e, g)
 			}
-			object.headerLine = line
+			object.HeaderLine = line
 		default:
 			// object properties
 			if component == nil {
-				if line.name.c == "BEGIN" {
+				if line.Name.C == "BEGIN" {
 					component = &Component{
-						headerLine:     line,
-						propertiyLines: []*ContentLine{},
+						HeaderLine:     line,
+						PropertiyLines: []*ContentLine{},
 					}
 				} else if line.String() == "END:VCALENDAR" {
-					object.footerLine = line
+					object.FooterLine = line
 				} else {
-					if len(object.components) == 0 {
-						object.propertiyLines = append(object.propertiyLines, line)
+					if len(object.Components) == 0 {
+						object.PropertiyLines = append(object.PropertiyLines, line)
 					} else {
 						return nil, fmt.Errorf("unexpected line: %s", line.String())
 					}
 				}
 			} else {
-				if line.String() == "END:"+component.headerLine.value.c {
-					component.footerLine = line
-					object.components = append(object.components, component)
+				if line.String() == "END:"+component.HeaderLine.Value.C {
+					component.FooterLine = line
+					object.Components = append(object.Components, component)
 					component = nil
 				} else {
-					component.propertiyLines = append(component.propertiyLines, line)
+					component.PropertiyLines = append(component.PropertiyLines, line)
 				}
 			}
 		}
@@ -83,7 +83,7 @@ func (p *Parser) parseLine() (*ContentLine, error) {
 		return nil, err
 	}
 
-	contentLine.name = &Ident{c: name, token: token}
+	contentLine.Name = &Ident{C: name, Token: token}
 
 	paramList := []*Param{}
 	for p.s.ch == ';' {
@@ -93,12 +93,12 @@ func (p *Parser) parseLine() (*ContentLine, error) {
 		}
 		paramList = append(paramList, param)
 	}
-	contentLine.param = paramList
+	contentLine.Param = paramList
 
 	switch p.s.ch {
 	case ':':
 		value, token := p.s.scanValue()
-		contentLine.value = &Ident{c: value, token: token}
+		contentLine.Value = &Ident{C: value, Token: token}
 	default:
 		return nil, fmt.Errorf(`unexpected error: should got : but %v`, string(p.s.ch))
 	}
@@ -125,7 +125,7 @@ func (p *Parser) parseParam() (*Param, error) {
 		return nil, p.s.err
 	}
 
-	param.paramName = &Ident{c: paramName, token: token}
+	param.ParamName = &Ident{C: paramName, Token: token}
 
 	switch p.s.ch {
 	case '=':
@@ -136,14 +136,14 @@ func (p *Parser) parseParam() (*Param, error) {
 			if err := p.s.err; err != nil {
 				return nil, err
 			}
-			paramValues = append(paramValues, &Ident{c: paramValue, token: token})
+			paramValues = append(paramValues, &Ident{C: paramValue, Token: token})
 			switch p.s.ch {
 			case ',':
 			default:
 				break OUTER
 			}
 		}
-		param.paramValues = paramValues
+		param.ParamValues = paramValues
 		return param, p.s.err
 	default:
 		return nil, fmt.Errorf(`unexpected error: should got = but %s`, string(p.s.ch))
