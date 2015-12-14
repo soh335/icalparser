@@ -32,4 +32,25 @@ END:VCALENDAR
 			t.Errorf("expected %v but got %v", e, g)
 		}
 	}
+
+	{
+		data := rnString(`BEGIN:VCALENDAR
+VERSION:2.0
+BEGIN:VEVENT
+ATTENDEE;DELEGATED-TO="mailto:jdoe@example.com","mailto:jqpublic@example.c
+ om":mailto:jsmith@example.com
+END:VEVENT
+END:VCALENDAR
+`)
+
+		obj, err := NewParser(strings.NewReader(data)).Parse()
+		if err != nil {
+			t.Error(err)
+		}
+		var b bytes.Buffer
+		NewPrinter(obj).WriteTo(&b)
+		if e, g := data, b.String(); e != g {
+			t.Errorf("expected %v but got %v", e, g)
+		}
+	}
 }

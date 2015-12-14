@@ -77,6 +77,7 @@ type Param struct {
 func (p *Param) String() string {
 	var b bytes.Buffer
 	b.WriteString(p.ParamName.String())
+	b.WriteString("=")
 	for i, paramValue := range p.ParamValues {
 		b.WriteString(paramValue.String())
 		if i < len(p.ParamValues)-1 {
