@@ -12,18 +12,18 @@ type Object struct {
 	footerLine     *ContentLine
 }
 
-func (o *Object) AsString() string {
+func (o *Object) String() string {
 	var b bytes.Buffer
-	b.WriteString(o.headerLine.AsString())
+	b.WriteString(o.headerLine.String())
 	b.WriteString("\r\n")
 	for _, line := range o.propertiyLines {
-		b.WriteString(line.AsString())
+		b.WriteString(line.String())
 		b.WriteString("\r\n")
 	}
 	for _, line := range o.components {
-		b.WriteString(line.AsString())
+		b.WriteString(line.String())
 	}
-	b.WriteString(o.footerLine.AsString())
+	b.WriteString(o.footerLine.String())
 	b.WriteString("\r\n")
 	return b.String()
 }
@@ -34,15 +34,15 @@ type Component struct {
 	footerLine     *ContentLine
 }
 
-func (c *Component) AsString() string {
+func (c *Component) String() string {
 	var b bytes.Buffer
-	b.WriteString(c.headerLine.AsString())
+	b.WriteString(c.headerLine.String())
 	b.WriteString("\r\n")
 	for _, line := range c.propertiyLines {
-		b.WriteString(line.AsString())
+		b.WriteString(line.String())
 		b.WriteString("\r\n")
 	}
-	b.WriteString(c.footerLine.AsString())
+	b.WriteString(c.footerLine.String())
 	b.WriteString("\r\n")
 	return b.String()
 }
@@ -53,19 +53,19 @@ type ContentLine struct {
 	value *Ident
 }
 
-func (c *ContentLine) AsString() string {
+func (c *ContentLine) String() string {
 	f := NewFoldingWriter(75)
-	io.WriteString(f, c.name.AsString())
+	io.WriteString(f, c.name.String())
 
 	for i, param := range c.param {
 		if i < len(c.param) {
 			io.WriteString(f, ";")
 		}
-		io.WriteString(f, param.AsString())
+		io.WriteString(f, param.String())
 	}
 
 	io.WriteString(f, ":")
-	io.WriteString(f, c.value.AsString())
+	io.WriteString(f, c.value.String())
 	return f.String()
 }
 
@@ -74,11 +74,11 @@ type Param struct {
 	paramValues []*Ident
 }
 
-func (p *Param) AsString() string {
+func (p *Param) String() string {
 	var b bytes.Buffer
-	b.WriteString(p.paramName.AsString())
+	b.WriteString(p.paramName.String())
 	for i, paramValue := range p.paramValues {
-		b.WriteString(paramValue.AsString())
+		b.WriteString(paramValue.String())
 		if i < len(p.paramValues)-1 {
 			b.WriteString(",")
 		}
@@ -91,7 +91,7 @@ type Ident struct {
 	token token
 }
 
-func (i *Ident) AsString() string {
+func (i *Ident) String() string {
 	var b bytes.Buffer
 	switch i.token {
 	case tokenQuotedString:

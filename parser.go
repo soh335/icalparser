@@ -39,7 +39,7 @@ func (p *Parser) Parse() (*Object, error) {
 
 		switch lineNum {
 		case 0:
-			if e, g := "BEGIN:VCALENDAR", line.AsString(); e != g {
+			if e, g := "BEGIN:VCALENDAR", line.String(); e != g {
 				return nil, fmt.Errorf("first line is expected %v but got %v", e, g)
 			}
 			object.headerLine = line
@@ -51,17 +51,17 @@ func (p *Parser) Parse() (*Object, error) {
 						headerLine:     line,
 						propertiyLines: []*ContentLine{},
 					}
-				} else if line.AsString() == "END:VCALENDAR" {
+				} else if line.String() == "END:VCALENDAR" {
 					object.footerLine = line
 				} else {
 					if len(object.components) == 0 {
 						object.propertiyLines = append(object.propertiyLines, line)
 					} else {
-						return nil, fmt.Errorf("unexpected line: %s", line.AsString())
+						return nil, fmt.Errorf("unexpected line: %s", line.String())
 					}
 				}
 			} else {
-				if line.AsString() == "END:"+component.headerLine.value.c {
+				if line.String() == "END:"+component.headerLine.value.c {
 					component.footerLine = line
 					object.components = append(object.components, component)
 					component = nil

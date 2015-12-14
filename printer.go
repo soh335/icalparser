@@ -13,5 +13,5 @@ func NewPrinter(o *Object) *Printer {
 }
 
 func (p *Printer) WriteTo(w io.Writer) (int, error) {
-	return io.WriteString(w, p.o.AsString())
+	return io.WriteString(w, p.o.String())
 }
